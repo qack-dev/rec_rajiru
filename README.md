@@ -35,6 +35,8 @@
 
     ```bash
     git clone https://github.com/qack-dev/rec_rajiru.git
+    ```
+    ```bash
     cd rec_rajiru
     ```
 
