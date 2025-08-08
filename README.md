@@ -10,7 +10,7 @@
 
 -   **簡単な操作:** 番組を特定するための数個のIDをコマンドラインで指定するだけで、手軽に録音が開始できます。
 -   **自動ファイル名生成:** `[ラジオ局名]番組名_エピソード名_配信日.m4a` のように、整理しやすく分かりやすいファイル名を自動で生成します。
--   **豊富なメタデータ:** ダウンロードした音声ファイルには、番組タイトル、アルバム名（ラジオ局名）、アーティスト名、番組のサブタイトルなどがメタデータとして自動的に埋め込まれます。これにより、音楽プレイヤーなどで管理がしやすくなります。
+-   **豊富なメタデータ:** ダウンロードした音声ファイルには、番組タイトル、アルバム名（ラジオ局名）、アーティスト名（パーソナリティ名）、番組のサブタイトルなどがメタデータとして自動的に埋め込まれます。これにより、音楽プレイヤーなどで管理がしやすくなります。
 -   **柔軟な保存先:** ダウンロードしたファイルの保存先を自由に指定できます。
 -   **自動化に対応:** Linuxの`cron`と組み合わせることで、毎週放送される番組などを定期的に自動でダウンロードする仕組みを簡単に構築できます。
 
@@ -34,7 +34,7 @@
     まず、このリポジトリをローカルマシンに複製します。
 
     ```bash
-    git clone https://github.com/your-username/rec_rajiru.git
+    git clone https://github.com/qack-dev/rec_rajiru.git
     cd rec_rajiru
     ```
 
@@ -68,7 +68,7 @@
 仮想環境に入ったまま、以下のコマンド形式でスクリプトを実行します。
 
 ```bash
-python rec_rajiru.py <series_site_id> <corner_site_id> <artist_name> <save_path>
+python -B rec_rajiru.py <series_site_id> <corner_site_id> <artist_name> <save_path>
 ```
 
 -   `<series_site_id>`: 番組のサイトID
@@ -76,13 +76,13 @@ python rec_rajiru.py <series_site_id> <corner_site_id> <artist_name> <save_path>
 -   `<artist_name>`: パーソナリティ名（メタデータ用）
 -   `<save_path>`: 保存先の絶対パス
 
-<series_site_id>は、[https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals](https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals)から、番組タイトルで検索し、特定することができます。
-番組タイトルが書いてあるところと同じ`{}`内（Pythonで言うところの辞書内）から探してください。
+<series_site_id>は、 [https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals](https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals) から、番組タイトルで検索し、特定することができます。
+番組タイトルが書いてあるところと同じ`{}`内（Pythonで言うところの辞書内）を探してください。
 
 **実行例:**
 
 ```bash
-python rec_rajiru.py G918NWNZ2V 01 "岩田 マキ" "/mnt/ssd/share/radio"
+python -B rec_rajiru.py G918NWNZ2V 01 "岩田 マキ" "/mnt/ssd/share/radio"
 ```
 
 仮想環境から抜けるコマンドは以下となります。
@@ -105,7 +105,7 @@ Linux環境では、`cron` を利用して番組のダウンロードを定期�
 
     ```bash
     # 毎週日曜日の早朝4:00に番組をダウンロードする例
-    0 4 * * 0   your_user /path/to/your/rec_rajiru/env/bin/python /path/to/your/rec_rajiru/rec_rajiru.py G918NWNZ2V 01 "岩田 マキ" "/mnt/ssd/share/radio"
+    0 4 * * 0   your_user /path/to/your/rec_rajiru/env/bin/python -B /path/to/your/rec_rajiru/rec_rajiru.py G918NWNZ2V 01 "岩田 マキ" "/mnt/ssd/share/radio"
     ```
 
     **【重要】**
