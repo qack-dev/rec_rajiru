@@ -40,7 +40,7 @@
 
 2.  **Python仮想環境の構築**
 
-    プロジェクト用の独立したPython環境を作成し、有効化します。
+    プロジェクト用の独立したPython環境（仮想環境）を作成し、有効化します。
 
     ```bash
     python -m venv env
@@ -65,21 +65,30 @@
 
 ## 基本的な使い方
 
-以下のコマンド形式でスクリプトを実行します。
+仮想環境に入ったまま、以下のコマンド形式でスクリプトを実行します。
 
 ```bash
-python rec_rajiru.py <site_id> <corner_site_id> <artist_name> <save_path>
+python rec_rajiru.py <series_site_id> <corner_site_id> <artist_name> <save_path>
 ```
 
--   `<site_id>`: 番組のサイトID
--   `<corner_site_id>`: コーナーサイトID
--   `<artist_name>`: アーティスト名（メタデータ用）
+-   `<series_site_id>`: 番組のサイトID
+-   `<corner_site_id>`: コーナーサイトID（基本的には01を入力）
+-   `<artist_name>`: パーソナリティ名（メタデータ用）
 -   `<save_path>`: 保存先の絶対パス
+
+<series_site_id>は、[https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals](https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals)から、番組タイトルで検索し、特定することができます。
+番組タイトルが書いてあるところと同じ`{}`内（Pythonで言うところの辞書内）から探してください。
 
 **実行例:**
 
 ```bash
 python rec_rajiru.py G918NWNZ2V 01 "岩田 マキ" "/mnt/ssd/share/radio"
+```
+
+仮想環境から抜けるコマンドは以下となります。
+
+```bash
+deactivate
 ```
 
 ## 高度な使い方: cronによる自動化 (Linux)
