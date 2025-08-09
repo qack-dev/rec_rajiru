@@ -82,7 +82,7 @@ python -B rec_rajiru.py <series_site_id> <corner_site_id> <artist_name> <save_pa
 -   `<series_site_id>`: 番組のサイトID
 -   `<corner_site_id>`: コーナーサイトID（基本的には01を入力）
 -   `<artist_name>`: パーソナリティ名（メタデータ用）
--   `<save_path>`: 保存先の絶対パス
+-   `<save_path>`: 保存先の絶対パスの2階層上
 
 <series_site_id>は、 [https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals](https://www.nhk.or.jp/radio-api/app/v1/web/ondemand/corners/new_arrivals) から、番組タイトルで検索し、特定することができます。
 番組タイトルが書いてあるところと同じ`{}`内（Pythonで言うところの辞書内）を探してください。
