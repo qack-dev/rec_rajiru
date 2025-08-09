@@ -67,6 +67,12 @@
 
 ## 基本的な使い方
 
+番組が保存されるフォルダを、正確な番組名で、手動かコマンドで事前に作成しておきます。
+-   **例）Linuxの場合:**
+    ```bash
+    sudo mkdir -p '/mnt/ssd/share/radio/らじる★らじる 聴き逃しサービス/なにしったのや〜？'
+    ```
+
 仮想環境に入ったまま、以下のコマンド形式でスクリプトを実行します。
 
 ```bash
@@ -84,7 +90,7 @@ python -B rec_rajiru.py <series_site_id> <corner_site_id> <artist_name> <save_pa
 **実行例:**
 
 ```bash
-python -B rec_rajiru.py G918NWNZ2V 01 "岩田 マキ" "/mnt/ssd/share/radio"
+python -B rec_rajiru.py 8Q8XG537NW 01 "岩田 マキ" "/mnt/ssd/share/radio"
 ```
 
 仮想環境から抜けるコマンドは以下となります。
